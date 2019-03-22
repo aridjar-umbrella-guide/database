@@ -4,24 +4,12 @@ defmodule Database.AdminUsersTest do
   alias Database.AdminUsers
 
   describe "admin_users" do
+    use Database.DataFixtures, [:admin_user]
+
     alias Database.AdminUsers.AdminUser
-
-    @valid_attrs %{}
-    @update_attrs %{}
-    @invalid_attrs %{}
-
-    def admin_user_fixture(attrs \\ %{}) do
-      {:ok, admin_user} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> AdminUsers.create_admin_user()
-
-      admin_user
-    end
 
     test "list_admin_users/0 returns all admin_users" do
       admin_user = admin_user_fixture()
-      |> IO.inspect 
       assert AdminUsers.list_admin_users() == [admin_user]
     end
 
