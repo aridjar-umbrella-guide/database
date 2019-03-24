@@ -21,7 +21,7 @@ defmodule Database.DataFixtures do
         accreditation: "user",
         email: "test@mail.test"
       }
-      @invalid_attrs  %{
+      @invalid_attrs %{
         username: nil,
         password: nil,
         accreditation: nil,
@@ -43,7 +43,6 @@ defmodule Database.DataFixtures do
   Apply the `fixtures`.
   """
   defmacro __using__(fixtures) when is_list(fixtures) do
-    for fixture <- fixtures, is_atom(fixture),
-      do: apply(__MODULE__, fixture, [])
+    for fixture <- fixtures, is_atom(fixture), do: apply(__MODULE__, fixture, [])
   end
 end
