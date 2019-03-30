@@ -34,7 +34,6 @@ defmodule Database.MixProject do
     [
       {:ecto_sql, "~>3.0"},
       {:postgrex, ">=0.0.0"},
-#      {:phoenix_ecto, "~> 4.0"},
       {:pbkdf2_elixir, "~> 1.0"},
       {:guardian, "~> 1.0"},
       # {:dep_from_hexpm, "~> 0.3.0"},

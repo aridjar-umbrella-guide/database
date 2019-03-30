@@ -11,19 +11,19 @@ defmodule Database.DataFixtures do
     quote do
       @valid_attrs %{
         username: "test_name",
-        password: "test_pwd",
+        password_hash: "test_pwd",
         accreditation: "user",
         email: "test@mail.test"
       }
       @update_attrs %{
         username: "test_name_updated",
-        password: "test_pwd",
+        password_hash: "test_pwd",
         accreditation: "user",
         email: "test@mail.test"
       }
       @invalid_attrs %{
         username: nil,
-        password: nil,
+        password_hash: nil,
         accreditation: nil,
         email: "test@mail.test"
       }
