@@ -11,7 +11,10 @@ use Mix.Config
 # You can configure your application as:
 
 config :database,
-  ecto_repos: [Database.Repo]
+  ecto_repos: [Database.Repo],
+  paths: ["/login"],
+  ports: [4001],
+  hosts: ["localhost"]
 
 # and access this configuration in your application as:
 #
@@ -27,5 +30,9 @@ config :database,
 # by uncommenting the line below and defining dev.exs, test.exs and such.
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
+
+config :admin, Database.Common.AdminGuardian,
+  issuer: "database",
+  secret_key: System.get_env("ADMIN_GUARDIAN_KEY")
 
 import_config "#{Mix.env()}.exs"

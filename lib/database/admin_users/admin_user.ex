@@ -1,6 +1,7 @@
 defmodule Database.AdminUsers.AdminUser do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Database.Common.PasswordHandler
 
   schema "admin_users" do
     field(:accreditation, :string, default: "user", null: false)
@@ -16,5 +17,6 @@ defmodule Database.AdminUsers.AdminUser do
     admin_user
     |> cast(attrs, [:email, :username, :password, :accreditation])
     |> validate_required([:email, :username, :password, :accreditation])
+    |> PasswordHandler.put_password_hash()
   end
 end
