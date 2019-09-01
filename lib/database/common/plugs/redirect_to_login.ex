@@ -9,8 +9,6 @@ defmodule Database.Common.Plugs.RedirectToLogin do
     ports = Application.get_env(:database, :ports)
     hosts = Application.get_env(:database, :hosts)
 
-    IO.inspect conn
-
     with true <- Enum.member?(ports, port),
       true <- Enum.member?(hosts, host),
       false <- Map.has_key?(private, :guardian_default_resource),
