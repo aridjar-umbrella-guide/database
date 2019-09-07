@@ -7,7 +7,7 @@ defmodule Database.Common.AdminGuardian do
   def subject_for_token(_, _), do: {:error, :reason_for_error}
 
   def resource_from_claims(%{"sub" => id}) do
-    user = AdminUsers.get_admin_user!(id)
+    user = AdminUsers.get_admin_user(id)
     case user do
       nil -> {:error, :resource_not_found}
       _ -> {:ok,  user}

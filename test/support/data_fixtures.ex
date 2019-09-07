@@ -9,21 +9,27 @@ defmodule Database.DataFixtures do
     alias Database.AdminUsers
 
     quote do
+      @login_attrs %{
+        username: "test_admin",
+        password: "test_pwd",
+        accreditation: "super_admin",
+        email: "admin@mail.test"
+      }
       @valid_attrs %{
         username: "test_name",
-        password_hash: "test_pwd",
+        password: "test_pwd",
         accreditation: "user",
         email: "test@mail.test"
       }
       @update_attrs %{
         username: "test_name_updated",
-        password_hash: "test_pwd",
+        password: "test_pwd",
         accreditation: "user",
         email: "test@mail.test"
       }
       @invalid_attrs %{
         username: nil,
-        password_hash: nil,
+        password: nil,
         accreditation: nil,
         email: "test@mail.test"
       }

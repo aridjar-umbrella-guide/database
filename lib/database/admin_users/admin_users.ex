@@ -33,6 +33,7 @@ defmodule Database.AdminUsers do
 
   """
   def get_admin_user!(id), do: Repo.get!(AdminUser, id)
+  def get_admin_user(id), do: Repo.get(AdminUser, id)
 
   @doc """
   Creates a admin_user.
