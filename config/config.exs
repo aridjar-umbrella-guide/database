@@ -13,7 +13,7 @@ use Mix.Config
 config :database,
   ecto_repos: [Database.Repo],
   paths: ["/login"],
-  ports: [4001],
+  ports: [4001, 4101],
   hosts: ["localhost"]
 
 # and access this configuration in your application as:

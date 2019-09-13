@@ -4,7 +4,7 @@ defmodule Database.Common.Plugs.RedirectToLogin do
 
   def init(opts), do: opts
 
-  def call(%Plug.Conn{host: host, port: port, request_path: path, private: private} = conn, _opts) do
+  def call(%Plug.Conn{host: host, port: port, request_path: path, private: private} = conn, _opts \\ nil) do
     paths = Application.get_env(:database, :paths)
     ports = Application.get_env(:database, :ports)
     hosts = Application.get_env(:database, :hosts)
