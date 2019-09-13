@@ -30,14 +30,14 @@ defmodule Database.AdminUsersTest do
       admin_user = admin_user_fixture()
 
       assert {:ok, %AdminUser{} = admin_user} =
-               AdminUsers.update_admin_user(admin_user, @update_attrs)
+        AdminUsers.update_admin_user(admin_user, @update_attrs)
     end
 
     test "update_admin_user/2 with invalid data returns error changeset" do
       admin_user = admin_user_fixture()
 
       assert {:error, %Ecto.Changeset{}} =
-               AdminUsers.update_admin_user(admin_user, @invalid_attrs)
+        AdminUsers.update_admin_user(admin_user, @invalid_attrs)
 
       assert admin_user == AdminUsers.get_admin_user!(admin_user.id)
     end
