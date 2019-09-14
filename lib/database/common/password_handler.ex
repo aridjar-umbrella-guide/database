@@ -9,6 +9,7 @@ defmodule Database.Common.PasswordHandler do
   def put_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
     change(changeset, password: Pbkdf2.hash_pwd_salt(password))
   end
+
   # if there is no password, it will return the changeset without any modifications
   def put_password_hash(changeset), do: changeset
 
@@ -21,7 +22,7 @@ defmodule Database.Common.PasswordHandler do
   # this private function take a query, fetch the data and compare the hash with another password
   defp check_pass(query, plain_text_password) do
     with database_user <- Repo.one(query),
-         {:ok, user} <- Pbkdf2.check_pass(database_user, plain_text_password, [hash_key: :password]) do
+         {:ok, user} <- Pbkdf2.check_pass(database_user, plain_text_password, hash_key: :password) do
       {:ok, user}
     else
       _ -> {:error, :invalid_credentials}
