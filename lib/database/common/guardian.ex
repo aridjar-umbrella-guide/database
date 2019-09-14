@@ -7,16 +7,16 @@ defmodule Database.Common.AdminGuardian do
   def subject_for_token(_, _), do: {:error, :reason_for_error}
 
   def resource_from_claims(%{"sub" => id}) do
-    user = if (Mix.env == :test) do
-      AdminUsers.get_admin_user(id)
-    else
-      AdminUsers.get_admin_user!(id)
-    end
+    user = get_admin_user(id, Mix.env())
 
     case user do
       nil -> {:error, :resource_not_found}
-      _ -> {:ok,  user}
+      _ -> {:ok, user}
     end
   end
+
   def resource_from_claims(_claims), do: {:error, :reason_for_error}
+
+  defp get_admin_user(id, :test = _), do: AdminUsers.get_admin_user(id)
+  defp get_admin_user(id, _), do: AdminUsers.get_admin_user!(id)
 end

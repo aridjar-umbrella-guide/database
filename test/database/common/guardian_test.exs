@@ -1,7 +1,7 @@
 defmodule Database.Common.GuardianTest do
   use Database.DataCase
 
-    describe "guardian_test" do
+  describe "guardian_test" do
     use Database.DataFixtures, [:admin_user]
 
     alias Database.Common.AdminGuardian
